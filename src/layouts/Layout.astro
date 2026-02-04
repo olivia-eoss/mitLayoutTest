@@ -1,13 +1,16 @@
 ---
-// src/layouts/SimpleLayout.astro
-import MyHeader from "../components/Header.astro";
-import Search from "@astrojs/starlight/components/Search.astro";
+// src/layouts/CustomLayout.astro
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 
 interface Props {
   title?: string;
+  description?: string;
 }
 
-const { title = "Startseite" } = Astro.props;
+const { title = "HEV Doku", description = "Willkommen zur HEV Dokumentation" } =
+  Astro.props;
 ---
 
 <!doctype html>
@@ -16,28 +19,76 @@ const { title = "Startseite" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="stylesheet" href="/src/styles/global.css" />
+    <meta name="description" content={description} />
   </head>
   <body>
-    <MyHeader />
-    <div class="hero__search">
-      <Search />
-    </div>
-    <main>
+    <Header />
+
+    <main class="custom-main">
       <slot />
     </main>
+
+    <Footer />
   </body>
 </html>
 
-<style>
-  body {
+<style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap");
+
+  * {
     margin: 0;
-    background: var(--color-white);
+    padding: 0;
+    box-sizing: border-box;
   }
 
-  main {
-    min-height: calc(100vh - 80px);
-    max-width: 1400px;
-    margin: 0 auto;
+  body {
+    font-family: "Space Grotesk", sans-serif;
+    color: #242d2c;
+    background-color: #ffffff;
+    line-height: 1.6;
+  }
+
+  .custom-main {
+    min-height: calc(100vh - 200px);
+  }
+
+  /* Starlight Search Styling */
+  site-search {
+    display: block;
+  }
+
+  site-search button[data-open-modal] {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    color: #6b7280;
+    cursor: pointer;
+    min-width: 240px;
+  }
+
+  site-search button[data-open-modal]:hover {
+    border-color: #2e8555;
+  }
+
+  site-search svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  site-search kbd {
+    display: inline-block;
+    padding: 0.125rem 0.375rem;
+    margin-left: auto;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.25rem;
+    font-family: monospace;
+    font-size: 0.75rem;
   }
 </style>

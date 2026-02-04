@@ -21,4 +21,135 @@ import { ArrowRight, Download } from "lucide-astro";
       display: none !important;
     }
   }
+
+  /* ===================================
+   Starlight Search Styling
+   =================================== */
+
+  /* Such-Button Styling */
+  site-search button[data-open-modal] {
+    background-color: #ffffff !important;
+    border: 2px solid #ededed !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 1rem !important;
+    font-family: "Space Grotesk", sans-serif !important;
+    font-size: 0.9rem !important;
+    color: #242d2c !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    min-width: 250px !important;
+  }
+
+  site-search button[data-open-modal]:hover {
+    border-color: #2e8555 !important;
+    box-shadow: 0 2px 8px rgba(46, 133, 85, 0.2) !important;
+  }
+
+  /* Such-Icon im Button */
+  site-search button[data-open-modal] svg {
+    color: #2e8555 !important;
+  }
+
+  /* Keyboard Shortcut Badge (⌘K) */
+  site-search button[data-open-modal] kbd {
+    background-color: #ededed !important;
+    border: 1px solid #ededed !important;
+    border-radius: 4px !important;
+    padding: 0.2rem 0.4rem !important;
+    font-family: "Space Grotesk", sans-serif !important;
+    font-size: 0.75rem !important;
+    color: #242d2c !important;
+    margin-left: auto !important;
+  }
+
+  /* Modal/Dialog Styling */
+  site-search dialog {
+    background-color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+    max-width: 600px !important;
+    width: 90% !important;
+  }
+
+  /* Search Input Feld */
+  site-search input[type="text"] {
+    font-family: "Space Grotesk", sans-serif !important;
+    font-size: 1rem !important;
+    padding: 0.75rem 1rem !important;
+    border: 2px solid #ededed !important;
+    border-radius: 8px !important;
+    color: #242d2c !important;
+  }
+
+  site-search input[type="text"]:focus {
+    outline: none !important;
+    border-color: #2e8555 !important;
+  }
+
+  /* Pagefind UI Container */
+  .pagefind-ui {
+    font-family: "Space Grotesk", sans-serif !important;
+  }
+
+  /* Suchergebnisse */
+  .pagefind-ui__result {
+    border: 1px solid #ededed !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .pagefind-ui__result:hover {
+    border-color: #2e8555 !important;
+    background-color: rgba(46, 133, 85, 0.05) !important;
+  }
+
+  /* Ergebnis Titel */
+  .pagefind-ui__result-title {
+    color: #2e8555 !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+  }
+
+  /* Ergebnis Text */
+  .pagefind-ui__result-excerpt {
+    color: #242d2c !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* "Keine Ergebnisse" Message */
+  .pagefind-ui__message {
+    color: #242d2c !important;
+    font-family: "Space Grotesk", sans-serif !important;
+  }
+
+  /* Close Button im Modal */
+  site-search dialog button[data-close-modal] {
+    background-color: transparent !important;
+    border: none !important;
+    color: #242d2c !important;
+    cursor: pointer !important;
+    padding: 0.5rem !important;
+  }
+
+  site-search dialog button[data-close-modal]:hover {
+    background-color: #ededed !important;
+    border-radius: 4px !important;
+  }
+
+  /* Responsive Anpassungen */
+  @media (max-width: 768px) {
+    site-search button[data-open-modal] {
+      min-width: 150px !important;
+    }
+
+    site-search dialog {
+      width: 95% !important;
+    }
+  }
 </style>

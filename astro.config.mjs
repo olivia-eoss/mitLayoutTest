@@ -20,6 +20,7 @@ export default defineConfig({
 			},
 			customCss: [
         		'./src/styles/custom.css',
+				'./src/styles/search-styles.css',
       		],
 			sidebar: [
 				{
