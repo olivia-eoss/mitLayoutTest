@@ -7,7 +7,20 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			logo: {
+				src: './src/assets/Logo-hev.svg',
+				replacesTitle: true,
+			},
+			defaultLocale: 'de',
+			locales: {
+				root: {
+				label: 'Deutsch',
+				lang: 'de',
+				}
+			},
+			customCss: [
+        		'./src/styles/custom.css',
+      		],
 			sidebar: [
 				{
 					label: 'Guides',

@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+
+:root {
+  --hev-green: #2E8555;
+  --hev-light-green: rgba(46, 133, 85, 0.46);
+  --hev-grey: #EDEDED;
+  --hev-white: #FFFFFF;
+  --hev-black: #242D2C;
+  
+  --sl-color-accent: var(--hev-green);
+  --sl-color-accent-low: var(--hev-light-green);
+  --sl-color-accent-high: var(--hev-green);
+  
+  --sl-color-text: var(--hev-black);
+  --sl-color-bg: var(--hev-white);
+  --sl-color-gray-1: var(--hev-grey);
+  
+  --sl-color-bg-nav: var(--hev-white);
+  --sl-color-bg-sidebar: var(--hev-grey);
+}
+
+:root[data-theme='dark'] {
+  --sl-color-accent: var(--hev-green);
+  --sl-color-accent-low: var(--hev-light-green);
+  --sl-color-bg: var(--hev-black);
+  --sl-color-text: var(--hev-white);
+}
+
+h1, h2, h3, .sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: var(--hev-black);
+}
+
+h1, .sl-markdown-content h1 {
+  font-size: 3rem; 
+  font-weight: 700;
+}
+
+h2, .sl-markdown-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h3, .sl-markdown-content h3 {
+  font-size: 1.5rem; 
+  font-weight: 700;
+}
+
+h4, .sl-markdown-content h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.125rem; 
+  font-weight: 700;
+}
+
+body, p, .sl-markdown-content p,
+.sl-markdown-content li {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--hev-black);
+}
+
+a {
+  color: var(--hev-green);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
