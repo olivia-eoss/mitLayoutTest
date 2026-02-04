@@ -1,12 +1,20 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightDocSearch from '@astrojs/starlight-docsearch';
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'My Docs',
+			      plugins: [
+        starlightDocSearch({
+          appId: 'YOUR_APP_ID',
+          apiKey: 'YOUR_SEARCH_API_KEY',
+          indexName: 'YOUR_INDEX_NAME',
+        }),
+      ],
 			logo: {
 				src: './src/assets/Logo-hev.svg',
 				replacesTitle: true,
