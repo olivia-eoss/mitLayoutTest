@@ -1,0 +1,117 @@
+---
+// src/components/MyHeader.astro
+import Button from "./Button.astro";
+import Search from "@astrojs/starlight/components/Search.astro";
+import { ArrowRight, Download } from "lucide-astro";
+
+const nav = [
+  { label: "example", href: "/docs/guides/example/" },
+  { label: "Rechnungen", href: "/docs/rechnungen/" },
+  { label: "Zahlungen", href: "/docs/zahlungen/" },
+  { label: "Auswertung", href: "/docs/auswertung/" },
+  { label: "example", href: "/docs/reference/example/" },
+];
+---
+
+<header class="hev-header">
+  <div class="hev-header__inner">
+    <div class="hev-header__left">
+      <a href="/">
+        <img src="/src/assets/Logo-hev.svg" alt="HEV Doku" />
+      </a>
+    </div>
+
+    <nav class="hev-header__nav" aria-label="Hauptnavigation">
+      {
+        nav.map((item) => (
+          <a class="hev-header__link" href={item.href}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hev-header__right">
+      <div class="hev-header__search">
+        <div id="docsearch"></div>
+      </div>
+
+      <div class="hero__search">
+        <Search />
+      </div>
+      <Button text="Kontakt" href="/kontakt">
+        <ArrowRight slot="icon-right" />
+      </Button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .hev-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-grey-100);
+  }
+
+  .hev-header__inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 1.25rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .hev-header__left img {
+    width: auto;
+    height: 40px;
+  }
+
+  .hev-header__nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    white-space: nowrap;
+  }
+
+  .hev-header__link {
+    text-decoration: none;
+    color: var(--color-black);
+    font-weight: 400;
+    font-size: var(--fs-h4);
+  }
+
+  .hev-header__link:hover {
+    color: var(--color-green);
+  }
+
+  .hev-header__right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hev-header__search {
+    display: flex;
+    align-items: center;
+  }
+
+  .hev-header__contact {
+    height: 42px;
+    padding: 0 1.1rem;
+  }
+
+  @media (max-width: 900px) {
+    .hev-header__inner {
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+    .hev-header__nav {
+      display: none;
+    }
+  }
+</style>
