@@ -1,7 +1,5 @@
 ---
-// src/layouts/Layout.astro (oder wie dein Layout heißt)
 import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 
 interface Props {
   title?: string;
@@ -22,10 +20,8 @@ const { title = "HEV Doku", description = "Willkommen zur HEV Dokumentation" } =
     <meta charset="UTF-8" />
     <title>{title}</title>
 
-    <!-- Pagefind UI Scripts -->
     <link href="/_pagefind/pagefind-ui.css" rel="stylesheet" />
-    <script is:inline src="/_pagefind/pagefind-ui.js"></script>
-    <!-- Pagefind Styles laden -->
+
     <link
       rel="stylesheet"
       href="https://unpkg.com/@pagefind/default-ui@latest/css/ui.css"
@@ -36,39 +32,5 @@ const { title = "HEV Doku", description = "Willkommen zur HEV Dokumentation" } =
     <main class="custom-main">
       <slot />
     </main>
-    <Footer />
   </body>
 </html>
-
-<style is:global>
-  body {
-    font-family: "Space Grotesk", sans-serif;
-    color: #242d2c;
-    background-color: #ffffff;
-  }
-
-  /* Such-Button */
-  site-search button[data-open-modal] {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    cursor: pointer;
-  }
-
-  site-search button[data-open-modal]:hover {
-    border-color: #2e8555;
-  }
-
-  /* Modal Styling */
-  site-search dialog {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 2rem;
-    max-width: 600px;
-  }
-</style>

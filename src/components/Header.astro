@@ -1,32 +1,91 @@
 ---
 import Search from "@astrojs/starlight/components/Search.astro";
 import Button from "./Button.astro";
-import { ArrowRight, Download } from "lucide-astro";
+import { ArrowRight } from "lucide-astro";
+import logo from "../assets/Logo-hev.svg";
 ---
 
-<div class="ms-header">
-  <div class="ms-left"></div>
+<header class="header">
+  <div class="header__container">
+    <a href="/" class="header__logo">
+      <img src={logo.src} alt="HEV Logo" />
+    </a>
 
-  <div class="ms-right-group">
-    <Search />
-    <Button text="Kontakt" href="/kontakt">
-      <ArrowRight slot="icon-right" />
-    </Button>
+    <div class="header__spacer"></div>
+
+    <div class="header__right">
+      <div class="header__search">
+        <Search />
+      </div>
+      <Button text="Kontakt" href="/kontakt">
+        <ArrowRight slot="icon-right" />
+      </Button>
+    </div>
   </div>
-</div>
+</header>
 
 <style>
-  @media (max-width: 600px) {
-    .ms-btn--orange {
-      display: none !important;
+  .header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ededed;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .header__logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .header__logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  .header__spacer {
+    flex: 1;
+  }
+
+  .header__right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .header__search {
+    width: 300px;
+  }
+
+  @media (max-width: 768px) {
+    .header__container {
+      padding: 0 1rem;
+      gap: 1rem;
+    }
+
+    .header__search {
+      width: 200px;
     }
   }
 
-  /* ===================================
-   Starlight Search Styling
-   =================================== */
+  @media (max-width: 600px) {
+    .header__search {
+      width: 150px;
+    }
+  }
 
-  /* Such-Button Styling */
   site-search button[data-open-modal] {
     background-color: #ffffff !important;
     border: 2px solid #ededed !important;
@@ -40,7 +99,7 @@ import { ArrowRight, Download } from "lucide-astro";
     display: flex !important;
     align-items: center !important;
     gap: 0.5rem !important;
-    min-width: 250px !important;
+    width: 100% !important;
   }
 
   site-search button[data-open-modal]:hover {
@@ -48,12 +107,10 @@ import { ArrowRight, Download } from "lucide-astro";
     box-shadow: 0 2px 8px rgba(46, 133, 85, 0.2) !important;
   }
 
-  /* Such-Icon im Button */
   site-search button[data-open-modal] svg {
     color: #2e8555 !important;
   }
 
-  /* Keyboard Shortcut Badge (⌘K) */
   site-search button[data-open-modal] kbd {
     background-color: #ededed !important;
     border: 1px solid #ededed !important;
@@ -65,7 +122,6 @@ import { ArrowRight, Download } from "lucide-astro";
     margin-left: auto !important;
   }
 
-  /* Modal/Dialog Styling */
   site-search dialog {
     background-color: #ffffff !important;
     border: none !important;
@@ -75,7 +131,6 @@ import { ArrowRight, Download } from "lucide-astro";
     width: 90% !important;
   }
 
-  /* Search Input Feld */
   site-search input[type="text"] {
     font-family: "Space Grotesk", sans-serif !important;
     font-size: 1rem !important;
@@ -90,12 +145,10 @@ import { ArrowRight, Download } from "lucide-astro";
     border-color: #2e8555 !important;
   }
 
-  /* Pagefind UI Container */
   .pagefind-ui {
     font-family: "Space Grotesk", sans-serif !important;
   }
 
-  /* Suchergebnisse */
   .pagefind-ui__result {
     border: 1px solid #ededed !important;
     border-radius: 8px !important;
@@ -109,26 +162,22 @@ import { ArrowRight, Download } from "lucide-astro";
     background-color: rgba(46, 133, 85, 0.05) !important;
   }
 
-  /* Ergebnis Titel */
   .pagefind-ui__result-title {
     color: #2e8555 !important;
     font-weight: 700 !important;
     font-size: 1.1rem !important;
   }
 
-  /* Ergebnis Text */
   .pagefind-ui__result-excerpt {
     color: #242d2c !important;
     font-size: 0.9rem !important;
   }
 
-  /* "Keine Ergebnisse" Message */
   .pagefind-ui__message {
     color: #242d2c !important;
     font-family: "Space Grotesk", sans-serif !important;
   }
 
-  /* Close Button im Modal */
   site-search dialog button[data-close-modal] {
     background-color: transparent !important;
     border: none !important;
@@ -142,14 +191,40 @@ import { ArrowRight, Download } from "lucide-astro";
     border-radius: 4px !important;
   }
 
-  /* Responsive Anpassungen */
   @media (max-width: 768px) {
-    site-search button[data-open-modal] {
-      min-width: 150px !important;
-    }
-
     site-search dialog {
       width: 95% !important;
     }
+  }
+</style>
+
+<style is:global>
+  body {
+    font-family: "Space Grotesk", sans-serif;
+    color: #242d2c;
+    background-color: #ffffff;
+  }
+
+  site-search button[data-open-modal] {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  site-search button[data-open-modal]:hover {
+    border-color: #2e8555;
+  }
+
+  site-search dialog {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    max-width: 600px;
   }
 </style>
